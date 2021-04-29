@@ -1,7 +1,7 @@
 export const routes = [
   {
     path: '/user',
-    component: { render: (h) => h('router-view') },
+    component: { render: h => h('router-view') },
     children: [
       {
         path: '/user/login',
@@ -9,8 +9,8 @@ export const routes = [
         component: () =>
           import(/* webpackChunkName: "login" */ '@layout/UserLayout/Login'),
         meta: {
-          title: '登录',
-        },
+          title: '登录'
+        }
       },
       {
         path: '/user/register',
@@ -20,14 +20,34 @@ export const routes = [
             /* webpackChunkName: "register" */ '@layout/UserLayout/Register'
           ),
         meta: {
-          title: '注册',
-        },
-      },
-    ],
+          title: '注册'
+        }
+      }
+    ]
   },
   {
-    path: '/',
+    path: '',
     component: () =>
-      import(/* webpackChunkName: "layout" */ '@layout/BaseLayout'),
-  },
+      import(/* webpackChunkName: "BaseLayout" */ '@layout/BaseLayout'),
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: () =>
+          import(/* webpackChunkName: "Home" */ '@layout/BaseLayout/Home'),
+        meta: {
+          title: '首页'
+        }
+      },
+      {
+        path: '/tis',
+        name: 'tis',
+        component: () =>
+          import(/* webpackChunkName: "Home" */ '@views/TIS/'),
+        meta: {
+          title: '轨迹管理'
+        }
+      }
+    ]
+  }
 ]

@@ -1,5 +1,5 @@
 <template>
-  <a-breadcrumb style="margin: 16px 0">
+  <a-breadcrumb class="nav-breadcrumb">
     <a-breadcrumb-item>Home</a-breadcrumb-item>
     <a-breadcrumb-item>List</a-breadcrumb-item>
     <a-breadcrumb-item>App</a-breadcrumb-item>
@@ -17,4 +17,9 @@ export default {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.nav-breadcrumb {
+  margin: 16px 0;
+  text-align: left;
+}
+</style>
