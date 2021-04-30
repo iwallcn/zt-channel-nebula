@@ -1,5 +1,5 @@
 // 轨迹管理菜单列表
-export const trmMenus = [
+export const tisMenus = [
   {
     id: 14056,
     name: '跟线工作台',
@@ -71,7 +71,7 @@ export const srmMenus = [
       {
         id: 1,
         name: '签约服务商管理',
-        url: '/abnormalMessage/listPage'
+        url: '/SRM/signMange'
       },
       {
         id: 2,
@@ -134,42 +134,84 @@ export const cmsMenus = [
   }
 ]
 
+export const wosMenus = [
+  {
+    id: 1,
+    name: '海外换单管理',
+    url: '',
+    children: []
+  },
+  {
+    id: 2,
+    name: '测试管理',
+    url: '',
+    children: []
+  },
+  {
+    id: 3,
+    name: '系统配置',
+    url: '',
+    children: []
+  }
+]
+
+export const fmsMenus = [
+  {
+    id: 1,
+    name: '海外换单管理',
+    url: '',
+    children: []
+  },
+  {
+    id: 2,
+    name: '测试管理',
+    url: '',
+    children: []
+  },
+  {
+    id: 3,
+    name: '系统配置',
+    url: '',
+    children: []
+  }
+]
+
 // 系统名称
 export const systemList = [
   {
     id: 1,
     name: '工作台',
-    url: 'home',
+    url: '/home',
     menu: []
   },
   {
     id: 2,
     name: '轨迹管理',
-    url: 'trm',
-    menu: trmMenus
+    url: '/TIS',
+    menu: tisMenus
   },
   {
     id: 3,
     name: 'SRM系统',
-    url: 'srm',
+    url: '/SRM',
     menu: srmMenus
   },
   {
     id: 4,
     name: 'CMS系统',
-    url: 'cms',
+    url: '/CMS',
     menu: cmsMenus
   },
   {
     id: 5,
-    name: 'TMS系统',
-    url: 'tms',
+    name: 'WOS系统',
+    url: '/WOS',
     menu: []
   },
   {
     id: 6,
-    name: 'WMS系统',
-    url: 'wms',
+    name: 'FMS系统',
+    url: '/FMS',
     menu: []
   }
 ]

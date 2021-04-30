@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     resize() {
-      this.chart.resize()
+      this.chart && this.chart.resize()
     },
     renderEchart() {
       // 基于准备好的dom，初始化echarts实例

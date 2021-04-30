@@ -1,6 +1,11 @@
 <template>
   <a-layout-header class="header-nav">
     <div class="logo"></div>
+    <a-icon
+      class="trigger"
+      :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+      @click="changeCollapsed"
+    />
     <a-menu
       class="header-menu"
       theme="dark"
@@ -24,6 +29,9 @@ import { systemList } from '../../mock/menu'
 import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'Header',
+  props: {
+    collapsed: Boolean
+  },
   data() {
     return {
       systemList
@@ -37,11 +45,13 @@ export default {
     ...mapMutations('app', ['SET_CURRENT_NavId']),
     // 头部菜单切换 点击工作台没有左侧菜单，点击其他的切换左侧菜单
     handleNavChange(item) {
-      if (item.key === 1) {
-        let menuSelect = this.systemList[item.key - 1]
-        this.$router.push(menuSelect.url)
-      }
+      let menuSelect = this.systemList[item.key - 1]
+      this.$router.push({ path: menuSelect.url })
       this.SET_CURRENT_NavId(item.key)
+    },
+    // 伸缩菜单显隐
+    changeCollapsed() {
+      this.$emit('changeCollapsed')
     }
   }
 }
@@ -51,6 +61,12 @@ export default {
 .header-nav {
   display: flex;
   .logo {
+  }
+  .trigger {
+    color: #fff;
+    font-size: 22px;
+    padding: 20px 17px;
+    height: 100%;
   }
   .header-menu {
     flex: 1;
