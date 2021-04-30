@@ -1,5 +1,9 @@
 <template>
-  <a-layout id="components-layout-demo-top-side-2" style="height: 100vh;">
+  <a-layout
+    id="components-layout-demo-top-side-2"
+    style="height: 100vh;"
+    :class="[`nav-theme-${navTheme}`]"
+  >
     <!--头部系统菜单-->
     <Header :collapsed="collapsed" @changeCollapsed="changeCollapsed"></Header>
 
@@ -9,6 +13,7 @@
         v-if="currentNavId != 1"
         :currentNavId="currentNavId"
         :collapsed="collapsed"
+        :navTheme="navTheme"
       ></sider-menu>
 
       <a-layout style="padding: 0 24px 24px">
@@ -24,6 +29,8 @@
           <router-view></router-view>
         </a-layout-content>
       </a-layout>
+
+      <SettingDrawer></SettingDrawer>
     </a-layout>
   </a-layout>
 </template>
@@ -33,6 +40,7 @@ import Header from './Header'
 import Home from './Home'
 import SiderMenu from './SiderMenu'
 import Breadcrumb from './Breadcrumb'
+import SettingDrawer from '../../components/SettingDrawer'
 import { mapGetters } from 'vuex'
 export default {
   data() {
@@ -42,7 +50,7 @@ export default {
   },
   created() {},
   computed: {
-    ...mapGetters('app', ['currentNavId'])
+    ...mapGetters('app', ['currentNavId', 'navTheme'])
   },
   methods: {
     changeCollapsed() {
@@ -51,9 +59,9 @@ export default {
   },
   components: {
     Header,
-    Home,
     SiderMenu,
-    Breadcrumb
+    Breadcrumb,
+    SettingDrawer
   }
 }
 </script>

@@ -1,6 +1,8 @@
 <template>
   <a-layout-header class="header-nav">
-    <div class="logo"></div>
+    <div class="logo">
+      <!-- <img src="https://www.ztn.cn/img/new/logo.png" /> -->
+    </div>
     <a-icon
       class="trigger"
       :type="collapsed ? 'menu-unfold' : 'menu-fold'"

@@ -1,8 +1,9 @@
 <template>
   <a-layout-sider
-    class="layoutSider"
+    :class="[`nav-theme-${navTheme}`]"
     v-model="collapsed"
     :trigger="null"
+    :theme="navTheme"
     collapsedWidth="80"
   >
     <a-menu
@@ -10,11 +11,15 @@
       :default-selected-keys="['1']"
       :default-open-keys="['sub1']"
     >
-      <a-sub-menu v-for="menu in menus" :key="menu.id" class="zt-sub-Menu">
+      <a-sub-menu v-for="menu in menus" :key="menu.id" style="text-align: left">
         <span slot="title">
           <icon-font type="icon-file" /><span>{{ menu.name }}</span></span
         >
-        <a-menu-item v-for="subMenu in menu.children" :key="subMenu.id">
+        <a-menu-item
+          v-for="subMenu in menu.children"
+          :key="subMenu.id"
+          :theme="navTheme"
+        >
           {{ subMenu.name }}
         </a-menu-item>
       </a-sub-menu>
@@ -28,7 +33,11 @@ export default {
   name: 'SiderMenu',
   props: {
     currentNavId: Number,
-    collapsed: false
+    collapsed: {
+      type: Boolean,
+      default: false
+    },
+    navTheme: String
   },
   data() {
     return {
@@ -36,6 +45,7 @@ export default {
     }
   },
   created() {
+    console.log(this.navTheme, 678)
     this.menus = systemList[this.currentNavId - 1].menu
   },
   watch: {
@@ -47,11 +57,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.layoutSider {
+.nav-theme-light {
   background: #fff;
   width: 200px;
 }
-.zt-sub-Menu {
-  text-align: left;
+.nav-theme-dark {
+  width: 200px;
+  ul {
+    background: #000 !important;
+    color: #fff;
+  }
 }
 </style>
