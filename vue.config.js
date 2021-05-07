@@ -10,13 +10,14 @@ module.exports = {
   assetsDir: 'assets',
   productionSourceMap: !isProduction,
   publicPath: '/',
-  configureWebpack: (config) => {
+  configureWebpack: config => {
     config.performance = {
       hints: false,
       maxEntrypointSize: 512000,
-      maxAssetSize: 512000,
+      maxAssetSize: 512000
     }
-
+    // Ignore all locale files of moment.js
+    config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
     if (process.env.VUE_APP_MODE === 'production') {
       // 为生产环境修改配置...
       config.mode = 'production'
@@ -30,22 +31,22 @@ module.exports = {
         // eslint-disable-next-line
         new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn/),
         new webpack.optimize.MinChunkSizePlugin({
-          minChunkSize: 10000, // Minimum number of characters
+          minChunkSize: 10000 // Minimum number of characters
         })
       )
       // 开启 Gzip 压缩
       config.plugins.push(
         new CompressionWebpackPlugin({
           algorithm: 'gzip',
-          test: /\.js$|\.html$|\.json$|\.css/,
+          test: /\.js$|\.html$|\.json$|\.css$|\.less/,
           threshold: 10240,
           minRatio: 0.8,
-          deleteOriginalAssets: false,
+          deleteOriginalAssets: false
         })
       )
     }
   },
-  chainWebpack: (config) => {
+  chainWebpack: config => {
     // config.plugins.delete("html");
     // config.plugins.delete("preload");
     config.plugins.delete('prefetch')
@@ -56,13 +57,13 @@ module.exports = {
       .set('@layout', resolve('src/layout'))
       .set('@comp', resolve('src/components'))
       .set('@views', resolve('src/views'))
-
+      .set('@ant-design/icons/lib/dist$', resolve('src/icons.js')) // 配置icon按需加载
     if (process.env.NODE_ENV === 'production') {
       config.plugin('compressionPlugin').use(
         new CompressionWebpackPlugin({
           test: /\.(js|css|less|sass)$/,
           threshold: 10240,
-          deleteOriginalAssets: false,
+          deleteOriginalAssets: false
         })
       )
     }
@@ -71,10 +72,10 @@ module.exports = {
     loaderOptions: {
       less: {
         lessOptions: {
-          javascriptEnabled: true,
-        },
-      },
-    },
+          javascriptEnabled: true
+        }
+      }
+    }
   },
   devServer: {
     open: false,
@@ -83,7 +84,7 @@ module.exports = {
     https: false,
     overlay: {
       warnings: false,
-      errors: false,
+      errors: false
     },
     proxy: {
       '/api': {
@@ -91,10 +92,10 @@ module.exports = {
         ws: false,
         changeOrigin: true,
         pathRewrite: {
-          '^/': '',
-        },
-      },
-    },
+          '^/': ''
+        }
+      }
+    }
   },
-  lintOnSave: true,
+  lintOnSave: true
 }

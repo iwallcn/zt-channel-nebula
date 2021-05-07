@@ -1,6 +1,59 @@
-.nav-theme-dark {
-  .ant-menu-submenu > .ant-menu {
-    background-color: #000;
-    color: #fff;
+// 覆盖默认样式
+.layout .layout-content .layout-content-wrapper {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.layout .layout-content .layout-content-wrapper {
+  background: none !important;
+}
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  padding: 12px;
+}
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+  border-right: none;
+}
+// 覆盖表单查询CSS
+.g-search {
+  background: #fff;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.g-list {
+  background: #fff;
+  padding: 16px;
+  // margin: 16px -16px 0 -16px;
+}
+.g-form {
+  .ant-row {
+    margin-bottom: 0;
+  }
+  .ant-form-item-label {
+    width: 100%;
+    text-align: left;
+    line-height: 32px;
+    label {
+      color: #666;
+    }
+  }
+  .ant-form-item-label > label::after {
+    content: '';
+  }
+  .g-btn-more {
+    .ant-row {
+      text-align: left;
+    }
+    button {
+      margin-right: 8px;
+    }
+  }
+}
+.g-btns {
+  text-align: left;
+  margin-bottom: 16px;
+  button {
+    margin-right: 8px;
   }
 }

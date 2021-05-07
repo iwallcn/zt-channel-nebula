@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-header">
+  <a-layout-header class="layout-header">
     <div class="layout-header-logo">
       <!-- <img src="https://www.ztn.cn/img/new/logo.png" /> -->
     </div>
@@ -22,7 +22,7 @@
     <div class="header-tool">
       tool
     </div>
-  </div>
+  </a-layout-header>
 </template>
 
 <script>

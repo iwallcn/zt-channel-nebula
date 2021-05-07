@@ -17,8 +17,8 @@
     <h4>风格设置</h4>
     <a-radio-group
       name="radioGroup"
-      :default-value="navTheme"
-      @change="changeNavTheme"
+      :default-value="theme"
+      @change="changeTheme"
     >
       <a-radio value="dark">
         黑色
@@ -44,12 +44,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('app', ['navTheme'])
+    ...mapGetters('app', ['theme'])
   },
   methods: {
-    ...mapMutations('app', ['SET_NavTheme']),
-    changeNavTheme(e) {
-      this.SET_NavTheme(e.target.value)
+    ...mapMutations('app', ['SET_THEME']),
+    changeTheme(e) {
+      this.SET_THEME(e.target.value)
     },
     onClose() {
       this.visible = false

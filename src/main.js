@@ -16,7 +16,9 @@ import {
   Tabs,
   Checkbox,
   Drawer,
-  Radio
+  Radio,
+  Select,
+  Table
 } from 'ant-design-vue' //引入组件，但不用引入样式
 
 const IconFont = Icon.createFromIconfontCN({
@@ -36,6 +38,8 @@ Vue.use(Tabs)
 Vue.use(Checkbox)
 Vue.use(Drawer)
 Vue.use(Radio)
+Vue.use(Select)
+Vue.use(Table)
 
 Vue.component('icon-font', IconFont)
 Vue.config.productionTip = false

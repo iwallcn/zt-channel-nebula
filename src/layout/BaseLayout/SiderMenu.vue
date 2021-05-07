@@ -5,6 +5,7 @@
     :openKeys.sync="openKeys"
     mode="inline"
     :theme="theme"
+    :inlineCollapsed="collapsed"
   >
     <template v-for="item in menuData">
       <a-menu-item
@@ -33,6 +34,10 @@ export default {
     },
     currentNavId: {
       type: Number
+    },
+    collapsed: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -40,7 +45,6 @@ export default {
     this.openKeysMap = {}
     this.routes = this.$router.options.routes
     return {
-      collapsed: false,
       menuData: [],
       selectedKeys: this.selectedKeysMap[this.$route.path],
       openKeys: this.collapsed ? [] : this.openKeysMap[this.$route.path]

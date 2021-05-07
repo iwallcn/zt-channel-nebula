@@ -2,7 +2,7 @@ export default {
   path: '/CMS',
   name: 'CMS',
   meta: {
-    icon: 'form',
+    icon: 'folder-open',
     title: 'CMS'
   },
   children: [

@@ -1,16 +1,16 @@
 <template>
   <div class="Workbench">
-    <Echarts style="height: 400px" :options="options"></Echarts>
+    <!-- <Echarts style="height: 400px" :options="options"></Echarts> -->
   </div>
 </template>
 
 <script>
-import Echarts from '../../components/Echart'
+// import Echarts from '../../components/Echart'
 import random from 'lodash/random'
 export default {
   name: 'Workbench',
   components: {
-    Echarts
+    // Echarts
   },
   data() {
     return {

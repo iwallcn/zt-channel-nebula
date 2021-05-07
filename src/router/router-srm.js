@@ -2,18 +2,19 @@ export default {
   path: '/srm',
   name: 'srm',
   meta: {
-    icon: 'form',
+    icon: 'folder-open',
     title: 'SRM系统'
   },
-  component: () => import('@/App'),
+  component: { render: h => h('router-view') },
   children: [
     {
       path: '/srm/supplierManage',
       name: 'supplierManage',
       meta: {
+        icon: 'folder-open',
         title: '供应商管理'
       },
-      component: () => import('@/App'),
+      component: { render: h => h('router-view') },
       children: [
         {
           path: '/srm/supplierManage/signManage',

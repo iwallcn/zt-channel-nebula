@@ -1,9 +1,9 @@
 <template>
   <a-layout-sider
-    :class="[`nav-theme-${navTheme}`]"
+    :class="[`nav-theme-${theme}`]"
     v-model="collapsed"
     :trigger="null"
-    :theme="navTheme"
+    :theme="theme"
     collapsedWidth="80"
   >
     <a-menu
@@ -18,7 +18,7 @@
         <a-menu-item
           v-for="subMenu in menu.children"
           :key="subMenu.id"
-          :theme="navTheme"
+          :theme="theme"
         >
           {{ subMenu.name }}
         </a-menu-item>
@@ -37,7 +37,7 @@ export default {
       type: Boolean,
       default: false
     },
-    navTheme: String
+    theme: String
   },
   data() {
     return {
@@ -45,7 +45,7 @@ export default {
     }
   },
   created() {
-    console.log(this.navTheme, 678)
+    console.log(this.theme, 678)
     this.menus = systemList[this.currentNavId - 1].menu
   },
   watch: {
