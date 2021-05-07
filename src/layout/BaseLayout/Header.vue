@@ -1,19 +1,18 @@
 <template>
-  <a-layout-header class="header-nav">
-    <div class="logo">
+  <div class="layout-header">
+    <div class="layout-header-logo">
       <!-- <img src="https://www.ztn.cn/img/new/logo.png" /> -->
     </div>
     <a-icon
-      class="trigger"
+      class="layout-header-trigger"
       :type="collapsed ? 'menu-unfold' : 'menu-fold'"
       @click="changeCollapsed"
     />
     <a-menu
-      class="header-menu"
+      class="layout-header-menu"
       theme="dark"
       mode="horizontal"
       :default-selected-keys="[currentNavId]"
-      :style="{ lineHeight: '64px' }"
       @click="handleNavChange"
     >
       <a-menu-item v-for="item in systemList" :key="item.id">
@@ -23,7 +22,7 @@
     <div class="header-tool">
       tool
     </div>
-  </a-layout-header>
+  </div>
 </template>
 
 <script>
@@ -45,7 +44,7 @@ export default {
   },
   methods: {
     ...mapMutations('app', ['SET_CURRENT_NavId']),
-    // 头部菜单切换 点击工作台没有左侧菜单，点击其他的切换左侧菜单
+    // 头部系统切换，并保存当前选中系统id到vuex中
     handleNavChange(item) {
       let menuSelect = this.systemList[item.key - 1]
       this.$router.push({ path: menuSelect.url })
@@ -58,24 +57,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less" scoped>
-.header-nav {
-  display: flex;
-  .logo {
-  }
-  .trigger {
-    color: #fff;
-    font-size: 22px;
-    padding: 20px 17px;
-    height: 100%;
-  }
-  .header-menu {
-    flex: 1;
-    text-align: left;
-  }
-  .header-tool {
-    width: 300px;
-  }
-}
-</style>

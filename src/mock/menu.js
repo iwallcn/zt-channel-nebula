@@ -187,31 +187,31 @@ export const systemList = [
   {
     id: 2,
     name: '轨迹管理',
-    url: '/TIS',
+    url: '/tis',
     menu: tisMenus
   },
   {
     id: 3,
     name: 'SRM系统',
-    url: '/SRM',
+    url: '/srm',
     menu: srmMenus
   },
   {
     id: 4,
     name: 'CMS系统',
-    url: '/CMS',
+    url: '/cms',
     menu: cmsMenus
   },
   {
     id: 5,
     name: 'WOS系统',
-    url: '/WOS',
+    url: '/wos',
     menu: []
   },
   {
     id: 6,
     name: 'FMS系统',
-    url: '/FMS',
+    url: '/fms',
     menu: []
   }
 ]

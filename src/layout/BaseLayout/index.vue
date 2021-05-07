@@ -1,54 +1,53 @@
 <template>
-  <a-layout
-    id="components-layout-demo-top-side-2"
-    style="height: 100vh;"
-    :class="[`nav-theme-${navTheme}`]"
-  >
+  <a-layout class="layout">
     <!--头部系统菜单-->
-    <Header :collapsed="collapsed" @changeCollapsed="changeCollapsed"></Header>
+    <a-layout-header>
+      <Header :collapsed="collapsed" @changeCollapsed="changeCollapsed" />
+    </a-layout-header>
 
     <a-layout>
-      <!-- 当前是工作台时，不显示左侧菜单 -->
-      <sider-menu
+      <a-layout-sider
         v-if="currentNavId != 1"
-        :currentNavId="currentNavId"
-        :collapsed="collapsed"
-        :navTheme="navTheme"
-      ></sider-menu>
+        :class="[`nav-theme-${navTheme}`]"
+        v-model="collapsed"
+        :trigger="null"
+        :theme="navTheme"
+        collapsedWidth="80"
+      >
+        <!-- 左侧菜单 -->
+        <sider-menu :theme="navTheme" :currentNavId="currentNavId" />
+      </a-layout-sider>
 
-      <a-layout style="padding: 0 24px 24px">
+      <a-layout class="layout-content">
+        <!-- 右侧路由导航 -->
         <Breadcrumb></Breadcrumb>
-        <a-layout-content
-          :style="{
-            background: '#fff',
-            padding: '24px',
-            margin: 0,
-            minHeight: '280px'
-          }"
-        >
+
+        <!-- 内容填充 -->
+        <a-layout-content class="layout-content-wrapper">
           <router-view></router-view>
         </a-layout-content>
       </a-layout>
 
-      <SettingDrawer></SettingDrawer>
+      <!--偏好设置-->
+      <setting-drawer />
     </a-layout>
   </a-layout>
 </template>
 
 <script>
 import Header from './Header'
-import Home from './Home'
 import SiderMenu from './SiderMenu'
 import Breadcrumb from './Breadcrumb'
 import SettingDrawer from '../../components/SettingDrawer'
 import { mapGetters } from 'vuex'
 export default {
   data() {
+    this.routes = this.$router.options.routes
     return {
-      collapsed: false
+      collapsed: false,
+      initMenuData: []
     }
   },
-  created() {},
   computed: {
     ...mapGetters('app', ['currentNavId', 'navTheme'])
   },
@@ -66,12 +65,6 @@ export default {
 }
 </script>
 
-<style>
-#components-layout-demo-top-side-2 .logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 28px 16px 0;
-  float: left;
-}
+<style lang="less">
+@import './index.less';
 </style>
